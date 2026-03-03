@@ -1,0 +1,180 @@
+.navbar {
+  position: fixed;
+  height: 100vh;
+  width: 100px;
+  top: 0;
+  right: 0;
+  background: transparent;
+  z-index: 1000;
+
+  &-container {
+    display: flex;
+    height: 100%;
+    justify-items: center;
+    align-items: center;
+    position: relative;
+  }
+
+  //   .logo {
+  //     display: flex;
+  //     align-items: flex-end;
+  //     text-decoration: none;
+
+  //     img {
+  //       height: 40px;
+  //       width: auto;
+  //       transition: all 0.3s ease;
+  //       object-fit: contain;
+  //       filter: invert(1);
+  //     }
+  //     &:hover {
+  //       color: #007bff;
+  //     }
+  //   }
+
+  .desktop-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.6rem;
+    margin-bottom: 4rem;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+
+    a {
+      text-decoration: none;
+      color: white;
+      font-weight: 300;
+      position: relative;
+      line-height: 1.5;
+
+      &:hover {
+        color: #ff9e00;
+        transition: 0.2s ease;
+      }
+
+      &.active {
+        color: #ff9e00;
+
+        &::after {
+          content: ">";
+          position: absolute;
+          left: -13px;
+          top: 50%;
+          transform: translateY(-50%);
+          color: #ff9e00;
+          font-size: 1rem;
+          font-weight: bold;
+          opacity: 0;
+          transition:
+            opacity 0.2s ease,
+            left 0.2s ease;
+        }
+
+        /* Show the arrow on hover */
+        &:hover::after {
+          opacity: 1;
+          left: -20px; /* Moves left slightly on hover */
+        }
+      }
+    }
+  }
+
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #333;
+    writing-mode: vertical-rl;
+
+    @media (max-width: 768px) {
+      display: block;
+    }
+
+    &:hover {
+      color: #007bff;
+    }
+  }
+
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: white;
+    z-index: 1001;
+    animation: slideIn 0.3s ease forwards;
+
+    &.closing {
+      animation: slideOut 0.3s ease forwards;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #333;
+
+      &:hover {
+        color: #007bff;
+      }
+    }
+
+    .mobile-links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      gap: 2rem;
+
+      a {
+        text-decoration: none;
+        color: #333;
+        font-size: 1.5rem;
+        font-weight: 500;
+        transition: color 0.3s;
+
+        &:hover {
+          color: #007bff;
+        }
+
+        &.active {
+          color: #007bff;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideOut {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+  }
+}

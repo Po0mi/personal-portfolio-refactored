@@ -1,0 +1,18 @@
+/* App.css - Minimal reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  width: 100%;
+  font-family: "Space Grotesk", sans-serif;
+  cursor: none;
+}
+
+.main-content {
+  margin-right: 100px;
+  width: calc(100% - 100px);
+}
