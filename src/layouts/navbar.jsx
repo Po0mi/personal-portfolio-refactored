@@ -1,7 +1,8 @@
 import React from "react";
 import { useActiveLink } from "../hooks/useActiveLink";
 import { useMobileMenu } from "../hooks/useMobileMenu";
-import Logo from "../assets/code-block-svgrepo-com.svg";
+import useNavAnimation from "../hooks/useNavAnimation";
+// import Logo from "./assets/code-block-svgrepo-com.svg";
 import "./navbar.scss";
 
 /**
@@ -20,6 +21,7 @@ import "./navbar.scss";
  * )
  */
 const Navbar = () => {
+  useNavAnimation();
   // Define the navigation sections/links
   const sections = ["home", "about", "projects", "contact"];
 

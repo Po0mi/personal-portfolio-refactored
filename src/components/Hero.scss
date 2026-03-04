@@ -3,11 +3,11 @@
   --bg-color: #0a0908;
   --secondary-text: #f4f3ee;
 }
+
 .hero {
   min-height: 100vh;
   width: 100vw;
   overflow: hidden;
-  flex-wrap: wrap;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,7 +22,7 @@
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: repeat(5, 1fr);
-    gap: 0px 0px;
+    gap: 0;
     grid-auto-flow: row;
     justify-items: center;
     align-items: center;
@@ -31,56 +31,77 @@
 
     .top-title {
       color: transparent;
-      grid-area: 1/2/4/7;
+      grid-area: 1/1/2/8;
       font-size: clamp(4rem, 15vw, 15rem);
       align-self: flex-start;
       font-family: "Syncopate", sans-serif;
       -webkit-text-stroke: 2px var(--secondary-text);
-      transition: 0.3s ease;
+      transition:
+        color 0.3s ease,
+        -webkit-text-stroke 0.3s ease;
       z-index: 20;
+      will-change: transform;
 
       &:hover {
         color: var(--main-text);
         -webkit-text-stroke: 0px;
       }
+    }
+
+    .middle-block {
+      grid-area: 3/2/5/7;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+      z-index: 20;
     }
 
     .middle-title {
-      grid-area: 3/2/5/7;
-      font-size: clamp(4rem, 5vw, 3rem);
+      font-size: clamp(4rem, 10vw, 10rem);
       color: var(--secondary-text);
       text-align: center;
       letter-spacing: 10px;
-      justify-self: center;
-      z-index: 20;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .hero-name {
+      font-size: clamp(0.5rem, 1vw, 0.8rem);
       font-weight: 100;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      color: var(--secondary-text);
+      text-align: center;
     }
 
     .bottom-title {
-      grid-area: 6/2/7/7;
+      grid-area: 6/1/7/8;
       color: transparent;
+      justify-self: center;
       font-size: clamp(4rem, 15vw, 14rem);
       font-family: "Syncopate", sans-serif;
       -webkit-text-stroke: 2px var(--secondary-text);
-      transform: translateY(10%);
       z-index: 20;
+      will-change: transform;
+      transition:
+        color 0.3s ease,
+        -webkit-text-stroke 0.3s ease;
 
       &:hover {
         color: var(--main-text);
         -webkit-text-stroke: 0px;
       }
     }
+  }
 
-    .corner-text {
-      grid-area: 3/2/5/1;
-      justify-self: flex-start;
-      writing-mode: vertical-rl;
-      color: var(--secondary-text);
-      margin-left: 1rem;
-      opacity: 0.5;
-      font-size: clamp(0.5rem, 3vw, 1.5rem);
-      z-index: 20;
-      text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  @keyframes bounceDown {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(5px);
     }
   }
 }
