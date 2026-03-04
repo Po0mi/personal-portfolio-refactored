@@ -70,10 +70,14 @@ const Contact = () => {
         </ul>
 
         <div className="footer-socials" ref={footerSocialsRef}>
-          <a href="https://github.com" target="_blank" rel="noreferrer">
+          <a href="https://github.com/Po0mi" target="_blank" rel="noreferrer">
             GitHub
           </a>
-          <a href="https://facebook.com" target="_blank" rel="noreferrer">
+          <a
+            href="https://www.facebook.com/dangabrielle.decastro.5"
+            target="_blank"
+            rel="noreferrer"
+          >
             Facebook
           </a>
         </div>
