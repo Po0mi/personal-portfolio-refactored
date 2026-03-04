@@ -1,129 +1,173 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
 import "./Cursor.scss";
 
 /**
  * CustomCursor Component
  *
- * A React component that creates a custom cursor that follows the user's mouse movements.
- * This component replaces the default browser cursor with a custom-styled cursor element.
+ * A React component that creates a custom GSAP-powered cursor.
+ * Features:
+ * - Smooth lagged follow using GSAP quickTo
+ * - Dot + ring dual cursor
+ * - Hover state expansion on interactive elements
+ * - Text cursor state on text elements
+ * - Hidden on mobile devices
  *
  * @component
- * @example
- * // Basic usage in your App component
- * function App() {
- *   return (
- *     <div>
- *       <CustomCursor />
- *       <YourOtherComponents />
- *     </div>
- *   );
- * }
- *
- * @example
- * // Usage with conditional rendering
- * function App() {
- *   const [isCursorEnabled, setIsCursorEnabled] = useState(true);
- *
- *   return (
- *     <div>
- *       {isCursorEnabled && <CustomCursor />}
- *       <button onClick={() => setIsCursorEnabled(!isCursorEnabled)}>
- *         Toggle Custom Cursor
- *       </button>
- *     </div>
- *   );
- * }
- *
- * @returns {JSX.Element} A div element that follows mouse movements
+ * @returns {JSX.Element}
  */
 const CustomCursor = () => {
-  /**
-   * State to store the current mouse position
-   * @type {[Object, Function]}
-   * @property {number} x - The X coordinate of the mouse cursor
-   * @property {number} y - The Y coordinate of the mouse cursor
-   */
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const dotRef = useRef(null);
+  const ringRef = useRef(null);
 
-  /**
-   * Effect hook that sets up and cleans up the mouse move event listener
-   *
-   * This effect:
-   * 1. Creates a mousemove event handler that updates the position state
-   * 2. Adds the event listener to the window
-   * 3. Returns a cleanup function that removes the event listener
-   *
-   * The empty dependency array ensures this effect runs only once when
-   * the component mounts, and the cleanup runs when it unmounts.
-   */
   useEffect(() => {
-    /**
-     * Handles mouse movement events and updates the cursor position
-     *
-     * @param {MouseEvent} e - The mouse event object from the DOM
-     * @param {number} e.clientX - The X coordinate relative to the viewport
-     * @param {number} e.clientY - The Y coordinate relative to the viewport
-     */
-    const moveCursor = (e) => {
-      setPosition({ x: e.clientX, y: e.clientY });
+    const dot = dotRef.current;
+    const ring = ringRef.current;
+    if (!dot || !ring) return;
+
+    // hide native cursor
+    document.body.style.cursor = "none";
+
+    // GSAP quickTo for performant cursor following
+    const moveDotX = gsap.quickTo(dot, "x", {
+      duration: 0.1,
+      ease: "power3.out",
+    });
+    const moveDotY = gsap.quickTo(dot, "y", {
+      duration: 0.1,
+      ease: "power3.out",
+    });
+    const moveRingX = gsap.quickTo(ring, "x", {
+      duration: 0.35,
+      ease: "power3.out",
+    });
+    const moveRingY = gsap.quickTo(ring, "y", {
+      duration: 0.35,
+      ease: "power3.out",
+    });
+
+    const onMouseMove = (e) => {
+      moveDotX(e.clientX);
+      moveDotY(e.clientY);
+      moveRingX(e.clientX);
+      moveRingY(e.clientY);
     };
 
-    // Add event listener to track mouse movements
-    window.addEventListener("mousemove", moveCursor);
+    // hover targets — links, buttons, anything clickable
+    const hoverTargets = document.querySelectorAll(
+      "a, button, [data-cursor='hover'], .project-row, .principle-row",
+    );
 
-    // Cleanup function to remove event listener when component unmounts
-    return () => window.removeEventListener("mousemove", moveCursor);
-  }, []); // Empty dependency array = run once on mount and cleanup on unmount
+    // text targets — paragraphs, headings
+    const textTargets = document.querySelectorAll(
+      "p, h1, h2, h3, h4, span, .row-desc",
+    );
 
-  /**
-   * Render the custom cursor element
-   *
-   * The cursor is positioned absolutely using the state coordinates.
-   * The actual styling (size, color, shape, etc.) should be defined in Cursor.scss
-   *
-   * Note: The cursor element should be positioned relative to its nearest
-   * positioned ancestor or the viewport, depending on your CSS setup.
-   */
+    const onEnterHover = () => {
+      gsap.to(dot, { scale: 0, duration: 0.2, ease: "power3.out" });
+      gsap.to(ring, {
+        scale: 2.5,
+        borderColor: "var(--main-text)",
+        backgroundColor: "rgba(255, 158, 0, 0.08)",
+        duration: 0.3,
+        ease: "power3.out",
+      });
+    };
+
+    const onLeaveHover = () => {
+      gsap.to(dot, { scale: 1, duration: 0.2, ease: "power3.out" });
+      gsap.to(ring, {
+        scale: 1,
+        borderColor: "rgba(244, 243, 238, 0.5)",
+        backgroundColor: "transparent",
+        duration: 0.3,
+        ease: "power3.out",
+      });
+    };
+
+    const onEnterText = () => {
+      gsap.to(dot, { scale: 0, duration: 0.2 });
+      gsap.to(ring, {
+        scaleX: 0.04,
+        scaleY: 1.2,
+        borderColor: "var(--main-text)",
+        duration: 0.2,
+        ease: "power3.out",
+      });
+    };
+
+    const onLeaveText = () => {
+      gsap.to(dot, { scale: 1, duration: 0.2 });
+      gsap.to(ring, {
+        scaleX: 1,
+        scaleY: 1,
+        borderColor: "rgba(244, 243, 238, 0.5)",
+        duration: 0.3,
+        ease: "power3.out",
+      });
+    };
+
+    const onMouseDown = () => {
+      gsap.to(ring, { scale: 0.8, duration: 0.1, ease: "power3.out" });
+      gsap.to(dot, { scale: 1.5, duration: 0.1, ease: "power3.out" });
+    };
+
+    const onMouseUp = () => {
+      gsap.to(ring, { scale: 1, duration: 0.15, ease: "power3.out" });
+      gsap.to(dot, { scale: 1, duration: 0.15, ease: "power3.out" });
+    };
+
+    // hide cursor when leaving window
+    const onMouseLeave = () => {
+      gsap.to([dot, ring], { opacity: 0, duration: 0.2 });
+    };
+
+    const onMouseEnter = () => {
+      gsap.to([dot, ring], { opacity: 1, duration: 0.2 });
+    };
+
+    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("mousedown", onMouseDown);
+    window.addEventListener("mouseup", onMouseUp);
+    document.addEventListener("mouseleave", onMouseLeave);
+    document.addEventListener("mouseenter", onMouseEnter);
+
+    hoverTargets.forEach((el) => {
+      el.addEventListener("mouseenter", onEnterHover);
+      el.addEventListener("mouseleave", onLeaveHover);
+    });
+
+    textTargets.forEach((el) => {
+      el.addEventListener("mouseenter", onEnterText);
+      el.addEventListener("mouseleave", onLeaveText);
+    });
+
+    return () => {
+      document.body.style.cursor = "auto";
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mousedown", onMouseDown);
+      window.removeEventListener("mouseup", onMouseUp);
+      document.removeEventListener("mouseleave", onMouseLeave);
+      document.removeEventListener("mouseenter", onMouseEnter);
+      hoverTargets.forEach((el) => {
+        el.removeEventListener("mouseenter", onEnterHover);
+        el.removeEventListener("mouseleave", onLeaveHover);
+      });
+      textTargets.forEach((el) => {
+        el.removeEventListener("mouseenter", onEnterText);
+        el.removeEventListener("mouseleave", onLeaveText);
+      });
+    };
+  }, []);
+
   return (
-    <div
-      className="cursor"
-      style={{
-        left: position.x,
-        top: position.y,
-      }}
-    />
+    <>
+      {/* small fast dot */}
+      <div className="cursor-dot" ref={dotRef} />
+      {/* lagged ring */}
+      <div className="cursor-ring" ref={ringRef} />
+    </>
   );
 };
 
 export default CustomCursor;
-
-/**
- * SCSS Requirements (Cursor.scss):
- *
- * The component expects the following CSS classes to be defined:
- *
- * .cursor {
- *   position: fixed;        // or absolute, depending on your layout
- *   width: 20px;            // Example size
- *   height: 20px;           // Example size
- *   border-radius: 50%;     // For circular cursor
- *   background-color: #000; // Cursor color
- *   pointer-events: none;    // Allows clicking through the cursor
- *   transform: translate(-50%, -50%); // Centers cursor on mouse point
- *   transition: transform 0.1s ease;   // Optional smooth movement
- *   z-index: 9999;          // Ensures cursor appears above other elements
- * }
- *
- * Optional hover effects:
- * .cursor.hover {
- *   transform: translate(-50%, -50%) scale(1.5);
- *   background-color: #ff0000;
- * }
- *
- * To add hover effects, you would need to track hover state in the component:
- *
- * const [isHovering, setIsHovering] = useState(false);
- *
- * // Add event listeners to elements you want to trigger hover effects
- * // Then conditionally add the 'hover' class to the cursor div
- */

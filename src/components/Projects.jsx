@@ -1,5 +1,9 @@
 import { useRef, useEffect, useState } from "react";
 import useProjectsAnimation from "../hooks/useProjectsAnimation";
+import PRC from "../assets/project.png";
+import Cafe from "../assets/project2.png";
+import Game from "../assets/project3.png";
+import portfolio from "../assets/project4.png";
 import "./Projects.scss";
 
 const projects = [
@@ -8,32 +12,36 @@ const projects = [
     title: "PRC Management System",
     meta: "2024 — Full Stack",
     tech: ["React", "PHP", "Firebase", "MySQL"],
-    preview: "/images/prc-preview.jpg",
+    preview: PRC,
     label: "Philippine Red Cross",
+    url: "https://philippineredcross-iloilochapter.org",
   },
   {
     number: "002",
     title: "Unica's Cafe",
     meta: "2025 — Frontend",
     tech: ["React", "GSAP", "Vercel"],
-    preview: "/images/unicas-preview.jpg",
+    preview: Cafe,
     label: "Unica's Cafe Website",
+    url: "https://unicascafe.shop",
   },
   {
     number: "003",
     title: "Wysteria Guild",
     meta: "2024 — Frontend",
     tech: ["HTML", "SCSS", "GSAP"],
-    preview: "/images/wysteria-preview.jpg",
+    preview: Game,
     label: "Wysteria Guild Site",
+    url: "https://po0mi.github.io/Wysteria-website/",
   },
   {
     number: "004",
     title: "Portfolio v2",
     meta: "2026 — Frontend",
     tech: ["React", "Vite", "SCSS"],
-    preview: "/images/portfolio-preview.jpg",
+    preview: portfolio,
     label: "Personal Portfolio",
+    url: "https://dandev.online",
   },
 ];
 
@@ -86,6 +94,10 @@ const Projects = () => {
     };
   }, []);
 
+  const handleRowClick = (url) => {
+    window.open(url, "_blank", "noopener noreferrer");
+  };
+
   return (
     <section className="projects" id="projects">
       <div className="noise" />
@@ -117,6 +129,12 @@ const Projects = () => {
               ref={rowRefs[i]}
               onMouseEnter={() => setActiveProject(project)}
               onMouseLeave={() => setActiveProject(null)}
+              onClick={() => handleRowClick(project.url)}
+              role="link"
+              tabIndex={0}
+              onKeyDown={(e) =>
+                e.key === "Enter" && handleRowClick(project.url)
+              }
             >
               <span className="project-number">{project.number}</span>
               <span className="project-title">{project.title}</span>

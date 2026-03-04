@@ -9,10 +9,9 @@ const useNavAnimation = () => {
 
     if (!nav || !links.length) return;
 
-    // nav slams in from right — hard, no ease
     gsap.fromTo(
       nav,
-      { x: 120, opacity: 0, skewY: 10 },
+      { x: 60, opacity: 0, skewY: 10 },
       {
         x: 0,
         opacity: 1,
@@ -23,7 +22,6 @@ const useNavAnimation = () => {
       },
     );
 
-    // links snap in one by one with a clip effect
     gsap.fromTo(
       links,
       { x: 40, opacity: 0, skewX: -10 },
