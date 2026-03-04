@@ -19,7 +19,7 @@ const projects = [
   {
     number: "002",
     title: "Unica's Cafe",
-    meta: "2025 — Frontend",
+    meta: "2026 — Frontend",
     tech: ["React", "GSAP", "Vercel"],
     preview: Cafe,
     label: "Unica's Cafe Website",
@@ -28,7 +28,7 @@ const projects = [
   {
     number: "003",
     title: "Wysteria Guild",
-    meta: "2024 — Frontend",
+    meta: "2025 — Frontend",
     tech: ["HTML", "SCSS", "GSAP"],
     preview: Game,
     label: "Wysteria Guild Site",
