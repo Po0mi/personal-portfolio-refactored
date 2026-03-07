@@ -59,7 +59,7 @@ const About = () => {
           I'm, Dan Gabrielle De Castro, a 4th-year IT student at Central
           Philippine University, building real-world experience in web
           development, networking, and system design. Passionate about
-          problem-solving and creating user-friendly interfaces — eager to apply
+          problem-solving and creating user-friendly interfaces, eager to apply
           my skills beyond the classroom.
         </p>
 
