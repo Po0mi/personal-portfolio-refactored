@@ -4,6 +4,7 @@ import PRC from "../assets/project.png";
 import Cafe from "../assets/project2.png";
 import Game from "../assets/project3.png";
 import portfolio from "../assets/project4.png";
+import CafeV2 from "../assets/project5.png";
 import "./Projects.scss";
 
 const projects = [
@@ -18,12 +19,12 @@ const projects = [
   },
   {
     number: "002",
-    title: "Unica's Cafe",
+    title: "Unicas Cafe",
     meta: "2026 — Frontend",
     tech: ["React", "Vite", "SCSS", "GSAP"],
     preview: Cafe,
-    label: "Unica's Cafe Website",
-    url: "https://unicascafe.shop",
+    label: "Unicas Cafe Website",
+    url: "https://unica-cafe-snti.vercel.app",
   },
   {
     number: "003",
@@ -42,6 +43,15 @@ const projects = [
     preview: portfolio,
     label: "Personal Portfolio",
     url: "https://dandev.online",
+  },
+  {
+    number: "005",
+    title: "Unicas Cafeo v2",
+    meta: "2026 — Frontend",
+    tech: ["React", "Vite", "SCSS", "GSAP"],
+    preview: CafeV2,
+    label: "Unicas Cafe Website",
+    url: "https://unicascafe.shop",
   },
 ];
 
