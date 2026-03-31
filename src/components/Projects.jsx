@@ -64,7 +64,8 @@ const Projects = () => {
   const row1 = useRef(null);
   const row2 = useRef(null);
   const row3 = useRef(null);
-  const rowRefs = [row0, row1, row2, row3];
+  const row4 = useRef(null);
+  const rowRefs = [row0, row1, row2, row3, row4];
 
   const mouse = useRef({ x: 0, y: 0 });
   const previewPos = useRef({ x: 0, y: 0 });
