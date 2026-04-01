@@ -76,7 +76,7 @@ const Principles = () => {
 
       <div className="principles-container">
         <div className="section-header">
-          <span className="section-count">05 TOTAL</span>
+          <span className="section-count">PRINCIPLES</span>
         </div>
 
         <div className="principles-list">

@@ -11,7 +11,7 @@ import "./navbar.scss";
 const Navbar = () => {
   useNavAnimation();
 
-  const sections = ["home", "about", "projects", "contact"];
+  const sections = ["home", "about", "projects", "principles", "contact"];
   const activeSection = useActiveLink(sections);
   const { isOpen, isClosing, toggle, close } = useMobileMenu();
 
