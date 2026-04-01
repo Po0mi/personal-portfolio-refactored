@@ -93,7 +93,7 @@ const useContactAnimation = ({
       { y: 20, opacity: 0, skewY: 5 },
       {
         y: 0,
-        opacity: 0.3,
+        opacity: 0.7,
         skewY: 0,
         duration: 0.3,
         ease: "power4.out",
@@ -111,7 +111,7 @@ const useContactAnimation = ({
       { x: 30, opacity: 0, skewX: 8 },
       {
         x: 0,
-        opacity: 0.3,
+        opacity: 0.6,
         skewX: 0,
         duration: 0.3,
         ease: "power4.out",

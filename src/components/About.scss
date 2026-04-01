@@ -1,9 +1,3 @@
-:root {
-  --main-text: #ff9e00;
-  --bg-color: #0a0908;
-  --secondary-text: #f4f3ee;
-}
-
 .about {
   min-height: 100vh;
   width: 100vw;
@@ -13,7 +7,7 @@
   align-items: center;
   position: relative;
   background-color: var(--bg-color);
-  border-bottom: solid 1px rgb(255, 255, 255, 0.3);
+  border-bottom: solid 1px rgba(255, 255, 255, 0.08);
 
   .about-container {
     height: 100vh;
@@ -38,132 +32,167 @@
     }
   }
 
+  // ── LEFT GUTTER ──
+  .about-gutter {
+    grid-area: 1/1/6/2;
+    align-self: stretch;
+    justify-self: stretch;
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+
+    .gutter-label {
+      font-size: clamp(1rem, 2.2vw, 5rem);
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--main-text);
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+    }
+  }
+
+  // ── PARAGRAPH ──
   .first-paragraph {
     color: var(--secondary-text);
     grid-area: 2/2/4/7;
-    line-height: 1.5;
-    font-size: clamp(1rem, 3vw, 2.5rem);
-    font-weight: 100;
+    line-height: 1.6;
+    font-size: clamp(1rem, 2.2vw, 1.8rem);
+    font-weight: 300;
+    margin-left: 3rem;
 
     @media (max-width: 768px) {
       grid-area: auto;
-      grid-column: 1 / 8;
-      padding: 0 2rem;
+      grid-column: 1 /7;
+      width: 100%;
+      text-align: center;
       font-size: clamp(1rem, 4vw, 1.6rem);
       line-height: 1.7;
     }
 
     @media (max-width: 480px) {
       padding: 0 1.5rem;
-      font-size: clamp(0.95rem, 4.5vw, 1.3rem);
+      font-size: clamp(0.95rem, 4.5vw, 1.25rem);
     }
   }
 
+  // ── TECH SECTION ──
   .tech-section {
     grid-area: 4/2/6/7;
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.75rem;
+    margin-left: 3rem;
 
     @media (max-width: 768px) {
       grid-area: auto;
       grid-column: 1 / 8;
       padding: 2rem 2rem 0;
-      gap: 0.8rem;
     }
 
     @media (max-width: 480px) {
       padding: 1.5rem 1.5rem 0;
+      margin: 0;
     }
 
     .tech-divider {
-      border-top: 1px solid rgba(244, 243, 238, 0.2);
       padding-top: 0.75rem;
 
       .tech-label {
-        font-size: 0.7rem;
+        font-size: 0.62rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.3em;
+        color: var(--main-text);
+      }
+    }
+
+    // ── GRID BOX — matches screenshot ──
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid rgba(244, 243, 238, 0.08);
+
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .tech-group {
+      padding: 14px 16px;
+      border-right: 1px solid rgba(244, 243, 238, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      &:last-child {
+        border-right: none;
+      }
+
+      @media (max-width: 768px) {
+        border-right: none;
+        border-bottom: 1px solid rgba(244, 243, 238, 0.08);
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+
+      .group-label {
+        font-size: 0.62rem;
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.2em;
         color: var(--main-text);
       }
-    }
 
-    .tech-groups {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-
-      .tech-group {
+      .tech-badges {
         display: flex;
-        align-items: center;
+        flex-wrap: wrap;
         gap: 0;
 
-        @media (max-width: 480px) {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 0.4rem;
-        }
-
-        .group-label {
-          font-size: 0.65rem;
+        .badge {
+          color: rgba(244, 243, 238, 0.6);
+          background: transparent;
+          border: 1px solid rgba(244, 243, 238, 0.08);
+          font-family: "IBM Plex Mono", monospace;
+          font-size: 0.8rem;
           font-weight: 700;
           text-transform: uppercase;
-          letter-spacing: 0.15em;
-          color: var(--secondary-text);
-          opacity: 0.35;
-          width: 80px;
-          flex-shrink: 0;
+          letter-spacing: 0.1em;
+          padding: 0.25rem 0.6rem;
+          margin: -1px 0 0 -1px;
+          cursor: default;
+          transition:
+            background 0.15s,
+            color 0.15s,
+            border-color 0.15s;
 
-          @media (max-width: 480px) {
-            width: auto;
+          @media (max-width: 768px) {
+            font-size: 0.6rem;
+            padding: 0.2rem 0.5rem;
           }
-        }
 
-        .tech-badges {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 0;
-
-          .badge {
-            color: var(--secondary-text);
-            background: transparent;
-            border: 1px solid var(--secondary-text);
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            padding: 0.3rem 0.75rem;
-            margin: -1px 0 0 -1px;
-            cursor: default;
-            transition:
-              background 0.15s,
-              color 0.15s;
-
-            @media (max-width: 768px) {
-              font-size: 0.65rem;
-              padding: 0.25rem 0.6rem;
-            }
-
-            @media (max-width: 480px) {
-              font-size: 0.6rem;
-              padding: 0.2rem 0.5rem;
-            }
-
-            &:hover {
-              background: var(--main-text);
-              color: var(--bg-color);
-              border-color: var(--main-text);
-              z-index: 1;
-              position: relative;
-            }
+          &:hover {
+            background: var(--main-text);
+            color: var(--bg-color);
+            border-color: var(--main-text);
+            z-index: 1;
+            position: relative;
           }
         }
       }
     }
   }
 
+  // ── WATERMARK ──
   .watermark {
     position: absolute;
     bottom: -2rem;
@@ -171,7 +200,7 @@
     font-size: clamp(6rem, 20vw, 15rem);
     font-weight: 900;
     color: var(--secondary-text);
-    opacity: 0.03;
+    opacity: 0.02;
     line-height: 1;
     pointer-events: none;
     user-select: none;
@@ -185,7 +214,7 @@
   }
 }
 
-// --- MASK ANIMATION ---
+// ── MASK ANIMATION ──
 .mask-inner {
   position: relative;
   display: inline-block;

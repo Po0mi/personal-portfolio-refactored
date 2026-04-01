@@ -1,6 +1,7 @@
 import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import usePrinciplesAnimation from "../hooks/usePrinciplesAnimation";
 import "./Principles.scss";
 
 const principles = [
@@ -9,7 +10,7 @@ const principles = [
     title: "CLEAN CODE",
     tag: "Development",
     highlight: "I try to write code that actually makes sense.",
-    desc: " Meaningful names, modular structure, and clear indentation — lifesavers when projects grow. I'd rather be clear than show off.",
+    desc: " Meaningful names, modular structure, and clear indentation, lifesavers when projects grow. I'd rather be clear than show off.",
   },
   {
     number: "02",
@@ -23,27 +24,37 @@ const principles = [
     title: "PERFORMANCE",
     tag: "Optimization",
     highlight: "I care about speed and smoothness.",
-    desc: " Pages shouldn't take forever to load. Lightweight, efficient — whether that's images, code, or animations. Lazy loading isn't a buzzword.",
+    desc: " Pages shouldn't take forever to load. Lightweigh and efficient, whether that's images, code, or animations. Lazy loading isn't a buzzword.",
   },
   {
     number: "04",
     title: "COMMUNICATION",
     tag: "Collaboration",
     highlight: "I try to be clear and open.",
-    desc: " Comments in code, pull requests, chatting with teammates — misunderstandings waste time. Documenting stuff is leaving a breadcrumb trail for future me.",
+    desc: " Comments in code, pull requests, and chats with teammates matter because misunderstandings waste time. Documenting things is like leaving a breadcrumb trail for future me.",
   },
   {
     number: "05",
     title: "LEARNING",
     tag: "Growth",
-    highlight: "I'm always trying to learn something new.",
-    desc: " CSS tricks, JS frameworks, AI tools — the web moves fast. Experiment, break things, see what sticks. Staying curious helps me grow.",
+    highlight: "I'm always trying to learn something new. ",
+    desc: "CSS tricks, JavaScript frameworks, and AI tools, the web changes fast. I like to explore, try things out, and even break stuff sometimes just to see how it works. Staying curious is what keeps me learning and improving.",
   },
 ];
 
 const Principles = () => {
   const rowRefs = useRef([]);
+  const gutterLabelRef = useRef(null);
+  const interruptOrangeRef = useRef(null);
+  const interruptDarkRef = useRef(null);
 
+  usePrinciplesAnimation({
+    interruptOrangeRef,
+    interruptDarkRef,
+    gutterLabelRef,
+  });
+
+  // ── ROW ANIMATIONS ──
   useEffect(() => {
     const rows = rowRefs.current.filter(Boolean);
     if (!rows.length) return;
@@ -74,9 +85,40 @@ const Principles = () => {
     <section className="principles" id="principles">
       <div className="noise" />
 
+      {/* ── INTERRUPT BLOCK ── */}
+      <div className="interrupt">
+        <div className="interrupt-orange" ref={interruptOrangeRef}>
+          <div>
+            <div className="interrupt-stat">
+              05
+              <br />
+              PROJ.
+            </div>
+            <div className="interrupt-stat-label">Shipped · 2024–2026</div>
+          </div>
+          <div className="interrupt-types">
+            Full Stack · Frontend · Commissioned · Build · Design
+          </div>
+        </div>
+        <div className="interrupt-dark" ref={interruptDarkRef}>
+          {principles.map((p) => (
+            <div key={p.number} className="interrupt-item">
+              <span className="interrupt-num">{p.number}</span>
+              <span className="interrupt-name">{p.title}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
       <div className="principles-container">
+        <div className="principles-gutter">
+          <span className="gutter-label" ref={gutterLabelRef}>
+            Principles
+          </span>
+        </div>
+
         <div className="section-header">
-          <span className="section-count">PRINCIPLES</span>
+          <span className="section-label">Principles</span>
         </div>
 
         <div className="principles-list">
@@ -97,7 +139,7 @@ const Principles = () => {
           ))}
         </div>
 
-        <h1 className="corner-text">03-PRINCIPLES</h1>
+        <h1 className="corner-text">03</h1>
       </div>
     </section>
   );

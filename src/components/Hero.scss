@@ -1,9 +1,3 @@
-:root {
-  --main-text: #ff6a00;
-  --bg-color: #0a0908;
-  --secondary-text: #f4f3ee;
-}
-
 .hero {
   min-height: 100vh;
   width: 100vw;
@@ -13,136 +7,153 @@
   align-items: center;
   position: relative;
   background-color: var(--bg-color);
-  border-bottom: solid 1px rgb(255, 255, 255, 0.3);
+  border-bottom: solid 1px rgba(255, 255, 255, 0.08);
 
   .hero-container {
     height: 100vh;
     width: 100%;
-    overflow: hidden;
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: 1fr 1fr;
     gap: 0;
-    grid-auto-flow: row;
-    justify-items: center;
-    align-items: center;
     position: relative;
     z-index: 10;
 
-    .top-title {
-      color: transparent;
-      grid-area: 1/1/2/8;
-      font-size: clamp(2.5rem, 12vw, 15rem);
-      align-self: flex-start;
-      font-family: "Syncopate", sans-serif;
-      -webkit-text-stroke: 2px var(--secondary-text);
-      transition:
-        color 0.3s ease,
-        -webkit-text-stroke 0.3s ease;
-      z-index: 20;
-      will-change: transform;
-      text-align: center;
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      grid-template-rows: 50vh 50vh;
+      height: 100vh;
+    }
+  }
 
-      @media (max-width: 768px) {
-        font-size: clamp(2rem, 13vw, 6rem);
-        -webkit-text-stroke: 1.5px var(--secondary-text);
-        align-self: center;
-        padding-top: 1rem;
-      }
+  // ── LEFT ──
+  .hero-left {
+    background: var(--main-text);
+    border-right: 1px solid rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    position: relative;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: clamp(32px, 5vw, 60px);
+    gap: 0;
 
-      @media (max-width: 480px) {
-        font-size: clamp(1rem, 13vw, 4rem);
-        -webkit-text-stroke: 1px var(--secondary-text);
-      }
+    @media (max-width: 768px) {
+      padding: 32px 24px;
+    }
+  }
 
-      &:hover {
-        color: var(--main-text);
-        -webkit-text-stroke: 0px;
-      }
+  // ── BIG TITLE ──
+  .left-big {
+    grid-row: 2;
+    align-self: center;
+    font-family: "Syncopate", sans-serif;
+    font-size: clamp(3rem, 8vw, 10rem);
+    font-weight: 700;
+    color: var(--bg-color);
+    line-height: 0.88;
+    letter-spacing: -2px;
+    will-change: transform;
+    z-index: 2;
+    transition:
+      color 0.3s ease,
+      -webkit-text-stroke 0.3s ease;
+
+    @media (max-width: 768px) {
+      font-size: clamp(2.5rem, 10vw, 5rem);
     }
 
-    .middle-block {
-      grid-area: 3/2/5/7;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.8rem;
-      z-index: 20;
-
-      @media (max-width: 768px) {
-        grid-area: 2/1/5/8;
-        padding: 0 1rem;
-        gap: 0.5rem;
-      }
+    @media (max-width: 480px) {
+      font-size: clamp(2rem, 11vw, 3.5rem);
     }
-
-    .middle-title {
-      font-size: clamp(2.5rem, 8vw, 10rem);
+    @media (min-width: 1200px) and (max-width: 1920px) {
+      font-size: clamp(3rem, 8vw, 7rem);
+    }
+    &:hover {
       color: var(--secondary-text);
-      text-align: center;
-      letter-spacing: 10px;
-      font-weight: 900;
-      line-height: 1;
+      -webkit-text-stroke: 0px;
+    }
+  }
 
-      @media (max-width: 768px) {
-        font-size: clamp(2rem, 10vw, 6rem);
-        letter-spacing: 6px;
-      }
+  // ── RIGHT ──
+  .hero-right {
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: clamp(32px, 5vw, 60px);
+    gap: 0;
 
-      @media (max-width: 480px) {
-        font-size: clamp(1.2rem, 12vw, 4rem);
-        letter-spacing: 4px;
-      }
+    @media (max-width: 768px) {
+      padding: 32px 24px;
+    }
+  }
+
+  .hero-name {
+    grid-row: 1;
+    font-size: clamp(0.55rem, 1vw, 0.8rem);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--secondary-text);
+    align-self: start;
+
+    span {
+      color: var(--main-text);
     }
 
-    .hero-name {
-      font-size: clamp(0.4rem, 1.2vw, 0.8rem);
-      font-weight: 100;
-      text-transform: uppercase;
-      letter-spacing: 0.3em;
-      color: var(--secondary-text);
+    @media (max-width: 768px) {
+      font-size: 0.65rem;
       text-align: center;
+    }
+  }
 
-      @media (max-width: 768px) {
-        font-size: clamp(0.5rem, 2vw, 0.75rem);
-        letter-spacing: 0.2em;
-      }
+  // ── OUTLINE STACK ──
+  .outline-stack {
+    grid-row: 2;
+    display: grid;
+    grid-template-rows: repeat(3, auto);
+    align-content: center;
+    gap: 0;
+  }
 
-      @media (max-width: 480px) {
-        font-size: 0.55rem;
-        letter-spacing: 0.15em;
-      }
+  .outline-word {
+    font-family: "Syncopate", sans-serif;
+    font-size: clamp(1.8rem, 4vw, 5.5rem);
+    font-weight: 700;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(244, 243, 238, 0.15);
+    letter-spacing: 0.05em;
+    line-height: 1;
+    will-change: transform;
+    transition:
+      color 0.3s ease,
+      -webkit-text-stroke 0.3s ease;
+
+    &:hover {
+      color: var(--main-text);
+      -webkit-text-stroke: 0px;
     }
 
-    .bottom-title {
-      grid-area: 6/1/7/8;
-      color: transparent;
-      justify-self: center;
-      font-size: clamp(2.5rem, 12vw, 14rem);
-      font-family: "Syncopate", sans-serif;
-      -webkit-text-stroke: 2px var(--secondary-text);
-      z-index: 20;
-      will-change: transform;
-      transition:
-        color 0.3s ease,
-        -webkit-text-stroke 0.3s ease;
+    @media (max-width: 768px) {
+      font-size: clamp(1.5rem, 7vw, 3rem);
       text-align: center;
+    }
+  }
 
-      @media (max-width: 768px) {
-        font-size: clamp(2rem, 13vw, 6rem);
-        -webkit-text-stroke: 1.5px var(--secondary-text);
-        grid-area: 5/1/6/8;
-      }
+  .outline-faint {
+    -webkit-text-stroke: 1px rgba(244, 243, 238, 0.15);
+  }
 
-      @media (max-width: 480px) {
-        font-size: clamp(1rem, 12vw, 4rem);
-        -webkit-text-stroke: 1px var(--secondary-text);
-      }
+  .filled-word {
+    font-family: "Syncopate", sans-serif;
+    font-size: clamp(1.8rem, 4vw, 5.5rem);
+    font-weight: 900;
+    color: var(--secondary-text);
+    letter-spacing: 4px;
+    line-height: 1;
 
-      &:hover {
-        color: var(--main-text);
-        -webkit-text-stroke: 0px;
-      }
+    @media (max-width: 768px) {
+      font-size: clamp(1.5rem, 7vw, 3rem);
+      letter-spacing: 2px;
+      text-align: center;
     }
   }
 }

@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState } from "react";
+import { gsap } from "gsap";
 import useProjectsAnimation from "../hooks/useProjectsAnimation";
 import PRC from "../assets/project.png";
 import Cafe from "../assets/project2.png";
@@ -59,6 +60,7 @@ const Projects = () => {
   const previewRef = useRef(null);
   const animFrameRef = useRef(null);
   const headerRef = useRef(null);
+  const gutterLabelRef = useRef(null); // ← add
 
   const row0 = useRef(null);
   const row1 = useRef(null);
@@ -73,6 +75,35 @@ const Projects = () => {
   const [activeProject, setActiveProject] = useState(null);
 
   useProjectsAnimation({ headerRef, rowRefs });
+
+  // ── GUTTER LABEL ANIMATION ──
+  useEffect(() => {
+    const label = gutterLabelRef.current;
+    if (!label) return;
+
+    gsap.set(label, { opacity: 0, y: 20 });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            gsap.to(label, {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
+              ease: "power4.out",
+              delay: 0.2,
+            });
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.5 },
+    );
+
+    observer.observe(label);
+    return () => observer.disconnect();
+  }, []);
 
   function lerp(a, b, t) {
     return a + (b - a) * t;
@@ -126,7 +157,13 @@ const Projects = () => {
       </div>
 
       <div className="projects-container">
-        <h1 className="corner-text">02-PROJECTS</h1>
+        <h1 className="corner-text">02</h1>
+
+        <div className="projects-gutter">
+          <span className="gutter-label" ref={gutterLabelRef}>
+            Projects
+          </span>
+        </div>
 
         <div className="section-header" ref={headerRef}>
           <span className="section-title">Selected Work</span>

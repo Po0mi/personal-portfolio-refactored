@@ -1,18 +1,45 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
-import { useEffect } from "react";
 import useMaskAnimation from "../hooks/useMaskAnimation";
 import "./About.scss";
 
 const About = () => {
   const paragraphRef = useRef(null);
-  const techLabelRef = useRef(null);
-
   const frontendRef = useRef(null);
   const backendRef = useRef(null);
   const toolsRef = useRef(null);
+  const gutterLabelRef = useRef(null); // ← add this
 
   useMaskAnimation([paragraphRef], "word");
+
+  // ── GUTTER LABEL ANIMATION ──
+  useEffect(() => {
+    const label = gutterLabelRef.current;
+    if (!label) return;
+
+    gsap.set(label, { opacity: 0, y: 20 });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            gsap.to(label, {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
+              ease: "power4.out",
+              delay: 0.2,
+            });
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.5 },
+    );
+
+    observer.observe(label);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const groups = [
@@ -23,7 +50,6 @@ const About = () => {
 
     groups.forEach((group) => {
       const badges = group.querySelectorAll(".badge");
-
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -46,15 +72,19 @@ const About = () => {
         },
         { threshold: 0, rootMargin: "0px 0px -80px 0px" },
       );
-
       observer.observe(group);
     });
   }, []);
 
   return (
     <section className="about" id="about">
-      <div className="noise"></div>
       <div className="about-container">
+        <div className="about-gutter">
+          <span className="gutter-label" ref={gutterLabelRef}>
+            About
+          </span>
+        </div>
+
         <p className="first-paragraph" ref={paragraphRef}>
           I'm, Dan Gabrielle De Castro, a 4th-year IT student at Central
           Philippine University, building real-world experience in web
@@ -64,8 +94,10 @@ const About = () => {
         </p>
 
         <div className="tech-section">
-          <div className="tech-divider"></div>
-          <div className="tech-groups">
+          <div className="tech-divider">
+            <span className="tech-label">Technologies</span>
+          </div>
+          <div className="tech-grid">
             <div className="tech-group" ref={frontendRef}>
               <span className="group-label">Frontend</span>
               <div className="tech-badges">
@@ -103,7 +135,8 @@ const About = () => {
             </div>
           </div>
         </div>
-        <span className="watermark">01-ABOUT</span>
+
+        <span className="watermark">01</span>
       </div>
     </section>
   );

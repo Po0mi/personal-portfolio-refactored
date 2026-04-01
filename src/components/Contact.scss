@@ -1,9 +1,3 @@
-:root {
-  --main-text: #ff9e00;
-  --bg-color: #0a0908;
-  --secondary-text: #f4f3ee;
-}
-
 .contact {
   min-height: 100vh;
   width: 100vw;
@@ -60,7 +54,7 @@
       font-weight: 700;
       text-transform: uppercase;
       color: transparent;
-      -webkit-text-stroke: 2px rgba(244, 243, 238, 1);
+      -webkit-text-stroke: 2px rgba(244, 243, 238, 0.5);
       line-height: 0.9;
       text-align: center;
       transition:
