@@ -19,11 +19,11 @@ const projects = [
   },
   {
     number: "002",
-    title: "Unicas Cafe",
+    title: "Unica's Cafe",
     meta: "2026 — Frontend",
     tech: ["React", "Vite", "SCSS", "GSAP"],
     preview: Cafe,
-    label: "Unicas Cafe Website",
+    label: "Unica's Cafe Website",
     url: "https://unica-cafe-snti.vercel.app",
   },
   {
@@ -46,11 +46,11 @@ const projects = [
   },
   {
     number: "005",
-    title: "Unicas Cafeo v2",
+    title: "Unica's Cafe v2",
     meta: "2026 — Frontend",
     tech: ["React", "Vite", "SCSS", "GSAP"],
     preview: CafeV2,
-    label: "Unicas Cafe Website",
+    label: "Unica's Cafe Website",
     url: "https://unicascafe.shop",
   },
 ];
