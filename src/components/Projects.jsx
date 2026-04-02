@@ -10,7 +10,7 @@ import "./Projects.scss";
 
 const projects = [
   {
-    number: "001",
+    number: "01",
     title: "PRC Management System",
     meta: "2024 — Full Stack",
     tech: ["React", "PHP", "Firebase", "MySQL"],
@@ -19,7 +19,7 @@ const projects = [
     url: "https://philippineredcross-iloilochapter.org",
   },
   {
-    number: "002",
+    number: "02",
     title: "Unica's Cafe",
     meta: "2026 — Frontend",
     tech: ["React", "Vite", "SCSS", "GSAP"],
@@ -28,7 +28,7 @@ const projects = [
     url: "https://unica-cafe-snti.vercel.app",
   },
   {
-    number: "003",
+    number: "03",
     title: "Pinas Guide",
     meta: "2026 — Frontend",
     tech: ["React", "Vite", "SCSS", "GSAP"],
@@ -37,7 +37,7 @@ const projects = [
     url: "https://tourism-website-eta-nine.vercel.app",
   },
   {
-    number: "004",
+    number: "04",
     title: "Portfolio v2",
     meta: "2026 — Frontend",
     tech: ["React", "Vite", "SCSS", "GSAP"],
@@ -46,7 +46,7 @@ const projects = [
     url: "https://dandev.online",
   },
   {
-    number: "005",
+    number: "05",
     title: "Unica's Cafe v2",
     meta: "2026 — Frontend",
     tech: ["React", "Vite", "SCSS", "GSAP"],
