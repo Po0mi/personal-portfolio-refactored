@@ -111,6 +111,7 @@ const About = () => {
                 <span className="badge">Tailwind CSS</span>
                 <span className="badge">GSAP</span>
                 <span className="badge">Three.js</span>
+                <span className="badge">Leaflet.js</span>
               </div>
             </div>
             <div className="tech-group" ref={backendRef}>
@@ -120,6 +121,7 @@ const About = () => {
                 <span className="badge">MySQL</span>
                 <span className="badge">Firebase</span>
                 <span className="badge">REST API</span>
+                <span className="badge">EmailJS</span>
               </div>
             </div>
             <div className="tech-group" ref={toolsRef}>

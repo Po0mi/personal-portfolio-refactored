@@ -6,6 +6,7 @@ import Cafe from "../assets/project2.png";
 import Game from "../assets/project3.png";
 import portfolio from "../assets/project4.png";
 import CafeV2 from "../assets/project5.png";
+import CareHome from "../assets/project6.png";
 import "./Projects.scss";
 
 const projects = [
@@ -13,7 +14,7 @@ const projects = [
     number: "01",
     title: "PRC Management System",
     meta: "2024 — Full Stack",
-    tech: ["React", "PHP", "Firebase", "MySQL"],
+    tech: ["React", "PHP", "Firebase", "MySQL", "Leaflet", "EmailJS"],
     preview: PRC,
     label: "Philippine Red Cross",
     url: "https://philippineredcross-iloilochapter.org",
@@ -22,7 +23,7 @@ const projects = [
     number: "02",
     title: "Unica's Cafe",
     meta: "2026 — Frontend",
-    tech: ["React", "Vite", "SCSS", "GSAP"],
+    tech: ["React", "Vite", "SCSS", "GSAP", "EmailJS"],
     preview: Cafe,
     label: "Unica's Cafe Website",
     url: "https://unica-cafe-snti.vercel.app",
@@ -49,10 +50,19 @@ const projects = [
     number: "05",
     title: "Unica's Cafe v2",
     meta: "2026 — Frontend",
-    tech: ["React", "Vite", "SCSS", "GSAP"],
+    tech: ["React", "Vite", "SCSS", "GSAP", "Leaflet", "EmailJS"],
     preview: CafeV2,
     label: "Unica's Cafe Website",
     url: "https://unicascafe.shop",
+  },
+  {
+    number: "06",
+    title: "Sycamore Care Home",
+    meta: "2026 — Frontend",
+    tech: ["React", "Vite", "SCSS", "GSAP", "Leaflet", "EmailJS"],
+    preview: CareHome,
+    label: "Care Home Website",
+    url: "https://care-home-ruby.vercel.app",
   },
 ];
 
@@ -67,7 +77,8 @@ const Projects = () => {
   const row2 = useRef(null);
   const row3 = useRef(null);
   const row4 = useRef(null);
-  const rowRefs = [row0, row1, row2, row3, row4];
+  const row5 = useRef(null);
+  const rowRefs = [row0, row1, row2, row3, row4, row5];
 
   const mouse = useRef({ x: 0, y: 0 });
   const previewPos = useRef({ x: 0, y: 0 });
