@@ -102,6 +102,7 @@ const About = () => {
               <span className="group-label">Frontend</span>
               <div className="tech-badges">
                 <span className="badge">React</span>
+                <span className="badge">Next.js</span>
                 <span className="badge">Vite</span>
                 <span className="badge">TypeScript</span>
                 <span className="badge">JavaScript</span>
@@ -122,6 +123,7 @@ const About = () => {
                 <span className="badge">Firebase</span>
                 <span className="badge">REST API</span>
                 <span className="badge">EmailJS</span>
+                <span className="badge">Sanity Studio</span>
               </div>
             </div>
             <div className="tech-group" ref={toolsRef}>

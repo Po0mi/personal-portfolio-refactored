@@ -59,10 +59,18 @@ const projects = [
     number: "06",
     title: "Sycamore Care Home",
     meta: "2026 — Frontend",
-    tech: ["React", "Vite", "SCSS", "GSAP", "Leaflet", "EmailJS"],
+    tech: [
+      "NextJS",
+      "Vite",
+      "SCSS",
+      "GSAP",
+      "Leaflet",
+      "EmailJS",
+      "Sanity Studio",
+    ],
     preview: CareHome,
     label: "Care Home Website",
-    url: "https://care-home-ruby.vercel.app",
+    url: "https://www.sycamorecottageresthome.com",
   },
 ];
 
