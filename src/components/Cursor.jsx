@@ -85,7 +85,13 @@ const CustomCursor = () => {
       });
     };
 
-    const onEnterText = () => {
+    const hoverSelector =
+      "a, button, [data-cursor='hover'], .project-row, .principle-row";
+
+    const isInsideHoverTarget = (el) => !!el.closest(hoverSelector);
+
+    const onEnterText = (e) => {
+      if (isInsideHoverTarget(e.currentTarget)) return;
       gsap.to(dot, { scale: 0, duration: 0.2 });
       gsap.to(ring, {
         scaleX: 0.04,
@@ -96,7 +102,8 @@ const CustomCursor = () => {
       });
     };
 
-    const onLeaveText = () => {
+    const onLeaveText = (e) => {
+      if (isInsideHoverTarget(e.currentTarget)) return;
       gsap.to(dot, { scale: 1, duration: 0.2 });
       gsap.to(ring, {
         scaleX: 1,
