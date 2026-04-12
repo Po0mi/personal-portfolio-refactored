@@ -21,15 +21,6 @@ const projects = [
   },
   {
     number: "02",
-    title: "Pinas Guide",
-    meta: "2026 — Frontend",
-    tech: ["React", "Vite", "SCSS", "GSAP"],
-    preview: Game,
-    label: "Wysteria Guild Site",
-    url: "https://tourism-website-eta-nine.vercel.app",
-  },
-  {
-    number: "03",
     title: "Portfolio v2",
     meta: "2026 — Frontend",
     tech: ["React", "Vite", "SCSS", "GSAP"],
@@ -38,7 +29,7 @@ const projects = [
     url: "https://dandev.online",
   },
   {
-    number: "04",
+    number: "03",
     title: "Unica's Cafe v2",
     meta: "2026 — Frontend",
     tech: ["React", "Vite", "SCSS", "GSAP", "Leaflet", "EmailJS"],
@@ -47,7 +38,7 @@ const projects = [
     url: "https://unicascafe.shop",
   },
   {
-    number: "05",
+    number: "04",
     title: "Sycamore Care Home",
     meta: "2026 — Frontend",
     tech: [
