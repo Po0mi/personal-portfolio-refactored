@@ -1,12 +1,12 @@
 import { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import useProjectsAnimation from "../hooks/useProjectsAnimation";
-import PRC from "../assets/project.png";
-import Cafe from "../assets/project2.png";
-import Game from "../assets/project3.png";
-import portfolio from "../assets/project4.png";
-import CafeV2 from "../assets/project5.png";
-import CareHome from "../assets/project6.png";
+import PRC from "../assets/project.webp";
+import Headphones from "../assets/project7.webp";
+import Game from "../assets/project3.webp";
+import portfolio from "../assets/project4.webp";
+import CafeV2 from "../assets/project5.webp";
+import CareHome from "../assets/project6.webp";
 import "./Projects.scss";
 
 const projects = [
@@ -21,12 +21,12 @@ const projects = [
   },
   {
     number: "02",
-    title: "Unica's Cafe",
+    title: "AeroPulse",
     meta: "2026 — Frontend",
-    tech: ["React", "Vite", "SCSS", "GSAP", "EmailJS"],
-    preview: Cafe,
-    label: "Unica's Cafe Website",
-    url: "https://unica-cafe-snti.vercel.app",
+    tech: ["React", "Vite", "SCSS", "GSAP", "Lenis"],
+    preview: Headphones,
+    label: "AeroPulse Website",
+    url: "https://aero-pulse-eight.vercel.app",
   },
   {
     number: "03",
