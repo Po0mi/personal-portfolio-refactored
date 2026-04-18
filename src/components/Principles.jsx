@@ -4,6 +4,15 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import usePrinciplesAnimation from "../hooks/usePrinciplesAnimation";
 import "./Principles.scss";
 
+// Register ScrollTrigger with GSAP to enable scroll-based animations
+gsap.registerPlugin(ScrollTrigger);
+
+/**
+ * Data: Professional Principles
+ *
+ * An array of objects defining the core values of the developer.
+ * Used to render both the "Interrupt" summary block and the detailed list below.
+ */
 const principles = [
   {
     number: "01",
@@ -42,50 +51,91 @@ const principles = [
   },
 ];
 
+/**
+ * Principles Component
+ *
+ * Showcases the developer's core professional values.
+ *
+ * Structure:
+ * 1. Interrupt Block: A high-contrast summary section (Orange/Dark split)
+ *    that breaks the visual flow to highlight key stats and principle titles.
+ * 2. Detailed List: A vertical list of principles that animate in as the
+ *    user scrolls down.
+ *
+ * Animations:
+ * - Complex entrance animations for the interrupt block (handled by custom hook).
+ * - Staggered, scroll-triggered reveal for each principle row using GSAP ScrollTrigger.
+ */
 const Principles = () => {
+  // -- Refs for Dynamic Elements --
+  // Using an array ref to store references to each .principle-row div
   const rowRefs = useRef([]);
+
+  // Refs for the "Interrupt" block elements (passed to custom hook)
   const gutterLabelRef = useRef(null);
   const interruptOrangeRef = useRef(null);
   const interruptDarkRef = useRef(null);
 
+  /**
+   * Interrupt & Gutter Animation
+   * Handles the initial reveal of the split-screen interrupt block and the side label.
+   */
   usePrinciplesAnimation({
     interruptOrangeRef,
     interruptDarkRef,
     gutterLabelRef,
   });
 
-  // ── ROW ANIMATIONS ──
+  // ── SCROLL-TRIGGERED ROW ANIMATIONS ──
+  /**
+   * Animates each principle row as it enters the viewport.
+   *
+   * - Uses GSAP ScrollTrigger to link animation progress to scroll position.
+   * - Each row starts slightly left (x: -40), invisible, and skewed.
+   * - As the row hits 90% of the viewport height, it slides into place.
+   * - Includes a small delay based on index (i * 0.07) for a cascading effect
+   *   if multiple rows are visible at once.
+   */
   useEffect(() => {
+    // Filter out any null refs (React may populate these asynchronously)
     const rows = rowRefs.current.filter(Boolean);
     if (!rows.length) return;
 
     rows.forEach((row, i) => {
       gsap.fromTo(
         row,
+        // From State: Hidden, shifted left, skewed
         { x: -40, opacity: 0, skewX: -8 },
+        // To State: Visible, original position, no skew
         {
           x: 0,
           opacity: 1,
           skewX: 0,
           duration: 0.5,
           ease: "power4.out",
-          delay: i * 0.07,
+          delay: i * 0.07, // Stagger effect based on index
           scrollTrigger: {
-            trigger: row,
-            start: "top 90%",
+            trigger: row, // The element that triggers the animation
+            start: "top 90%", // Start when top of row hits 90% of viewport height
+            // toggleActions: "play none none none" is default for fromTo
           },
         },
       );
     });
 
+    // Cleanup: Kill all ScrollTrigger instances associated with this component
+    // to prevent memory leaks and duplicate triggers on re-renders
     return () => ScrollTrigger.getAll().forEach((t) => t.kill());
   }, []);
 
   return (
     <section className="principles" id="principles">
+      {/* Background Noise Texture */}
       <div className="noise" />
 
-      {/* ── INTERRUPT BLOCK ── */}
+      {/* ── INTERRUPT BLOCK ── 
+          A visually distinct section that breaks the layout to grab attention.
+      */}
       <div className="interrupt">
         <div className="interrupt-orange" ref={interruptOrangeRef}>
           <div>
@@ -111,21 +161,25 @@ const Principles = () => {
       </div>
 
       <div className="principles-container">
+        {/* Left Gutter Label */}
         <div className="principles-gutter">
           <span className="gutter-label" ref={gutterLabelRef}>
             Principles
           </span>
         </div>
 
+        {/* Section Header */}
         <div className="section-header">
           <span className="section-label">Principles</span>
         </div>
 
+        {/* Principle Rows List */}
         <div className="principles-list">
           {principles.map((p, i) => (
             <div
               key={p.number}
               className="principle-row"
+              // Callback ref to populate the rowRefs array
               ref={(el) => (rowRefs.current[i] = el)}
             >
               <span className="row-number">{p.number}</span>
@@ -139,6 +193,7 @@ const Principles = () => {
           ))}
         </div>
 
+        {/* Background Watermark for Section Numbering */}
         <h1 className="corner-text">03</h1>
       </div>
     </section>
