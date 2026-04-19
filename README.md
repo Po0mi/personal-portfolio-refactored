@@ -159,7 +159,7 @@ npm run build
 
 ## Live Site
 
-[![Live](https://img.shields.io/badge/Live-dandev.online-ff6a00?style=for-the-badge&logoColor=white)](https://dandev.online)
+[![Live](https://img.shields.io/badge/Live-dandev.online-ff6a00?style=for-the-badge&logoColor=white)](https://gabdev.online)
 
 ---
 
