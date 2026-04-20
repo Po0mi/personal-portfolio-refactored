@@ -159,7 +159,7 @@ npm run build
 
 ## Live Site
 
-[![Live](https://img.shields.io/badge/Live-dandev.online-ff6a00?style=for-the-badge&logoColor=white)](https://dandev.online)
+[![Live](https://img.shields.io/badge/Live-dandev.online-ff6a00?style=for-the-badge&logoColor=white)](https://gabdev.online)
 
 ---
 
@@ -170,4 +170,4 @@ npm run build
 ![Role](https://img.shields.io/badge/Role-Frontend%20Developer-0a0908?style=flat-square&labelColor=ff6a00)
 ![Year](https://img.shields.io/badge/Year-4th%20Year%20IT-0a0908?style=flat-square&labelColor=ff6a00)
 
-[decastrogab21@gmail.com](mailto:decastrogab21@gmail.com) · [dandev.online](https://dandev.online)
+[decastrogab21@gmail.com](mailto:decastrogab21@gmail.com) · [gabdev.online](https://gabdev.online)
