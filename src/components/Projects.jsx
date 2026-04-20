@@ -8,6 +8,7 @@ import Game from "../assets/project3.webp";
 import portfolio from "../assets/project4.webp";
 import CafeV2 from "../assets/project5.webp";
 import CareHome from "../assets/project6.webp";
+import Ebook from "../assets/project8.webp";
 import "./Projects.scss";
 
 /**
@@ -48,7 +49,7 @@ const projects = [
     number: "04",
     title: "Unica's Cafe v2",
     meta: "2026 — Frontend",
-    tech: ["React", "Vite", "SCSS", "GSAP", "Leaflet", "EmailJS"],
+    tech: ["React", "SCSS", "GSAP", "Leaflet", "EmailJS"],
     preview: CafeV2,
     label: "Unica's Cafe Website",
     url: "https://unicascafe.shop",
@@ -69,6 +70,15 @@ const projects = [
     preview: CareHome,
     label: "Care Home Website",
     url: "https://www.sycamorecottageresthome.com",
+  },
+  {
+    number: "06",
+    title: "E-book Landing Page",
+    meta: "2026 — Frontend",
+    tech: ["NextJS", "SCSS", "GSAP", "Leaflet"],
+    preview: Ebook,
+    label: "Care Home Website",
+    url: "https://e-book-landing-page-indol.vercel.app",
   },
 ];
 
