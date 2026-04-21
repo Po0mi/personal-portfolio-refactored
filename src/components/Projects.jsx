@@ -9,6 +9,7 @@ import portfolio from "../assets/project4.webp";
 import CafeV2 from "../assets/project5.webp";
 import CareHome from "../assets/project6.webp";
 import Ebook from "../assets/project8.webp";
+import Retrolume from "../assets/project9.webp";
 import "./Projects.scss";
 
 /**
@@ -75,10 +76,19 @@ const projects = [
     number: "06",
     title: "E-book Landing Page",
     meta: "2026 — Frontend",
-    tech: ["NextJS", "SCSS", "GSAP", "Leaflet"],
+    tech: ["NextJS", "SCSS", "GSAP", "Lenis"],
     preview: Ebook,
-    label: "Care Home Website",
+    label: "E-book Landing Page",
     url: "https://e-book-landing-page-indol.vercel.app",
+  },
+  {
+    number: "07",
+    title: "Retrolume",
+    meta: "2026 — Frontend",
+    tech: ["NextJS", "SCSS", "GSAP", "Lenis"],
+    preview: Retrolume,
+    label: "Retrolume Website",
+    url: "https://retrolume-nu.vercel.app",
   },
 ];
 
@@ -107,7 +117,8 @@ const Projects = () => {
   const row3 = useRef(null);
   const row4 = useRef(null);
   const row5 = useRef(null);
-  const rowRefs = [row0, row1, row2, row3, row4, row5];
+  const row6 = useRef(null);
+  const rowRefs = [row0, row1, row2, row3, row4, row5, row6];
 
   // -- Mouse Tracking State --
   // Using refs instead of state for mouse coordinates to avoid re-renders on every pixel move
