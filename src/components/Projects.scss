@@ -1,5 +1,5 @@
 .projects {
-  min-height: 120vh;
+  min-height: 140vh;
   width: 100vw;
   overflow: hidden;
   display: flex;
@@ -16,7 +16,7 @@
   }
 
   .projects-container {
-    height: 120vh;
+    height: 140vh;
     width: 100%;
     overflow: hidden;
     display: grid;
@@ -136,12 +136,13 @@
   .section-header {
     grid-area: 1/2/2/7;
     width: 100%;
-    align-self: flex-end;
+    align-self: center;
     display: flex;
     align-items: center;
     justify-content: flex-end;
     border-bottom: 1px solid rgba(244, 243, 238, 0.08);
     padding-bottom: 1rem;
+    margin-bottom: 5rem;
 
     @media (max-width: 768px) {
       grid-area: auto;
@@ -160,7 +161,7 @@
 
   // ── PROJECT LIST ──
   .project-list {
-    grid-area: 2/2/6/7;
+    grid-area: 1/2/6/7;
     width: 100%;
     height: 100%;
     display: flex;
