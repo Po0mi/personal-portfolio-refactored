@@ -8,6 +8,8 @@ import CafeV2 from "../assets/project5.webp";
 import CareHome from "../assets/project6.webp";
 import Ebook from "../assets/project8.webp";
 import Retrolume from "../assets/project9.webp";
+import WhatMenCrave from "../assets/project10.webp";
+import Lumiere from "../assets/project11.webp";
 import "./Projects.scss";
 
 const TABS = ["All", "Frontend", "Full Stack"];
@@ -54,7 +56,15 @@ const projects = [
     title: "Sycamore Care Home",
     meta: "2026 — Frontend",
     category: "Frontend",
-    tech: ["NextJS", "Vite", "SCSS", "GSAP", "Leaflet", "EmailJS", "Sanity Studio"],
+    tech: [
+      "NextJS",
+      "Vite",
+      "SCSS",
+      "GSAP",
+      "Leaflet",
+      "EmailJS",
+      "Sanity Studio",
+    ],
     preview: CareHome,
     url: "https://www.sycamorecottageresthome.com",
   },
@@ -75,6 +85,24 @@ const projects = [
     tech: ["NextJS", "SCSS", "GSAP", "Lenis"],
     preview: Retrolume,
     url: "https://retrolume-nu.vercel.app",
+  },
+  {
+    number: "09",
+    title: "What Men Crave",
+    meta: "2026 — Funnel Website",
+    category: "Frontend",
+    tech: ["NextJS", "SCSS", "GSAP"],
+    preview: WhatMenCrave,
+    url: " https://getwhatmencrave.com",
+  },
+  {
+    number: "10",
+    title: "Lumiere Library",
+    meta: "2026 — Frontend",
+    category: "Frontend",
+    tech: ["NextJS", "SCSS", "GSAP"],
+    preview: Lumiere,
+    url: "https://lumier-library.vercel.app",
   },
 ];
 
