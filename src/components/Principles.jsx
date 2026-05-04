@@ -140,7 +140,7 @@ const Principles = () => {
         <div className="interrupt-orange" ref={interruptOrangeRef}>
           <div>
             <div className="interrupt-stat">
-              05
+              09
               <br />
               PROJ.
             </div>

@@ -1,5 +1,5 @@
 .projects {
-  min-height: 100vh;
+  min-height: 150vh;
   width: 100vw;
   display: flex;
   justify-content: center;
@@ -10,7 +10,7 @@
 
   .projects-container {
     width: 100%;
-    min-height: 100vh;
+    min-height: 150vh;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: auto 1fr;
@@ -19,7 +19,6 @@
     align-items: start;
     position: relative;
     z-index: 10;
-    padding-bottom: 5rem;
 
     @media (max-width: 768px) {
       padding: 5rem 0 4rem;
