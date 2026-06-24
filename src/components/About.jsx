@@ -177,6 +177,7 @@ const About = () => {
               <span className="group-label">Backend</span>
               <div className="tech-badges">
                 <span className="badge">PHP</span>
+                <span className="badge">Supabase</span>
                 <span className="badge">MySQL</span>
                 <span className="badge">Firebase</span>
                 <span className="badge">REST API</span>
@@ -191,6 +192,7 @@ const About = () => {
               <div className="tech-badges">
                 <span className="badge">Git</span>
                 <span className="badge">GitHub</span>
+                <span className="badge">Cloudflare</span>
                 <span className="badge">Vercel</span>
                 <span className="badge">Postman</span>
                 <span className="badge">Figma</span>

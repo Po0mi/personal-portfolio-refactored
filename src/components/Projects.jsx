@@ -10,6 +10,7 @@ import Ebook from "../assets/project8.webp";
 import Retrolume from "../assets/project9.webp";
 import WhatMenCrave from "../assets/project10.webp";
 import Lumiere from "../assets/project11.webp";
+import TrabahoTrack from "../assets/project12.webp";
 import "./Projects.scss";
 
 const TABS = ["All", "Frontend", "Full Stack"];
@@ -18,7 +19,7 @@ const projects = [
   {
     number: "01",
     title: "PRC Management System",
-    meta: "2024 — Full Stack",
+    meta: "2024 - Full Stack",
     category: "Full Stack",
     tech: ["React", "PHP", "Firebase", "MySQL", "Leaflet", "EmailJS"],
     preview: PRC,
@@ -27,7 +28,7 @@ const projects = [
   {
     number: "02",
     title: "AeroPulse",
-    meta: "2026 — Frontend",
+    meta: "2026 - Frontend",
     category: "Frontend",
     tech: ["React", "Vite", "SCSS", "GSAP", "Lenis"],
     preview: Headphones,
@@ -35,17 +36,17 @@ const projects = [
   },
   {
     number: "03",
-    title: "Portfolio v2",
-    meta: "2026 — Frontend",
-    category: "Frontend",
-    tech: ["React", "Vite", "SCSS", "GSAP"],
-    preview: portfolio,
-    url: "https://dandev.online",
+    title: "Trabaho Track",
+    meta: "2026 - Full stack",
+    category: "Full Stack",
+    tech: ["NextJS", "Supabase", "SCSS", "GSAP", "PostgreSQL"],
+    preview: TrabahoTrack,
+    url: "https://trabahotrack.vercel.app",
   },
   {
     number: "04",
     title: "Unica's Cafe v2",
-    meta: "2026 — Frontend",
+    meta: "2026 - Frontend",
     category: "Frontend",
     tech: ["React", "SCSS", "GSAP", "Leaflet", "EmailJS"],
     preview: CafeV2,
@@ -54,7 +55,7 @@ const projects = [
   {
     number: "05",
     title: "Sycamore Care Home",
-    meta: "2026 — Frontend",
+    meta: "2026 - Frontend",
     category: "Frontend",
     tech: [
       "NextJS",
@@ -71,7 +72,7 @@ const projects = [
   {
     number: "06",
     title: "E-book Landing Page",
-    meta: "2026 — Frontend",
+    meta: "2026 - Frontend",
     category: "Frontend",
     tech: ["NextJS", "SCSS", "GSAP", "Lenis"],
     preview: Ebook,
@@ -80,7 +81,7 @@ const projects = [
   {
     number: "07",
     title: "Retrolume",
-    meta: "2026 — Frontend",
+    meta: "2026 - Frontend",
     category: "Frontend",
     tech: ["NextJS", "SCSS", "GSAP", "Lenis"],
     preview: Retrolume,
@@ -89,7 +90,7 @@ const projects = [
   {
     number: "09",
     title: "What Men Crave",
-    meta: "2026 — Funnel Website",
+    meta: "2026 - Funnel Website",
     category: "Frontend",
     tech: ["NextJS", "SCSS", "GSAP"],
     preview: WhatMenCrave,
@@ -98,7 +99,7 @@ const projects = [
   {
     number: "10",
     title: "Lumiere Library",
-    meta: "2026 — Frontend",
+    meta: "2026 - Frontend",
     category: "Frontend",
     tech: ["NextJS", "SCSS", "GSAP"],
     preview: Lumiere,
