@@ -138,11 +138,12 @@ const About = () => {
 
         {/* Main Content: Intro Paragraph */}
         <p className="first-paragraph" ref={paragraphRef}>
-          I'm, Dan Gabrielle De Castro, a 4th-year IT student at Central
-          Philippine University, building real-world experience in web
-          development, networking, and system design. Passionate about
-          problem-solving and creating user-friendly interfaces, eager to apply
-          my skills beyond the classroom.
+          I'm Dan Gabrielle De Castro, a graduate of Information Technology from
+          Central Philippine University, with hands-on experience in web
+          development, networking, and system design. I’m passionate about
+          solving real-world problems and building user-friendly digital
+          solutions. Eager to grow professionally, I’m looking to apply my
+          skills in a dynamic environment and contribute to impactful projects.
         </p>
 
         {/* Technical Skills Section */}
